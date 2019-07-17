@@ -1,0 +1,63 @@
+﻿@using Transivo.Model.Models
+
+@{
+    ViewBag.Title = "Shipping";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Company> companies = ViewBag.Companies;
+}
+
+<!--== About Page Content Start ==-->
+<section style="height:100px"></section>
+<section id="about-area" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Section Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Kargonuzu Taşımaya Hazır Firmalar</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                    <p>Dilediğiniz Firma İle Nakliye İşlemine Devam Edebilirsiniz...</p>
+                </div>
+            </div>
+            <!-- Section Title End -->
+        </div>
+        <!-- About Fretutes Start -->
+        <div class="about-feature-area">
+            <div class="row">
+                <!-- Single Fretutes Start -->
+                @foreach (Company item in companies)
+                {
+                    <div class="col-lg-4 divClass" style="margin-bottom:10px">
+                        <div class="about-feature-item active divID">
+                            <i class="fa fa-car inputID"></i>
+                            <h3>@item.CompanyName</h3>
+                            <label class="kmFreight" value="@item.Freight">Km başına : @item.Freight</label>
+                            <br />
+                            <input class="number txtFreight" type="number" placeholder="Km yazınız.." style="display:inline;width:100px">
+                            <button value="@item.ID" type="button" class="btn-danger btnCalculate" style="display:inline">Hesapla</button>
+                            <br />
+                            <label value="@item.ID" class="totalFreight" style="color:red"></label>
+                            <br />
+                            @Html.ActionLink("Kargola", "Index", "Home", new { id = item.ID }, new { @class = "rent-btn" })
+                        </div>
+                    </div>
+                }
+                <!-- Single Fretutes End -->
+            </div>
+        </div>
+        <!-- About Fretutes End -->
+    </div>
+</section>
+<!--== About Page Content End ==-->
+
+@section scripts{
+    <script>
+        $(".btnCalculate").click(function ()
+        {
+            var id = $(this).closest(".btnCalculate").val();
+            var kmFreight = $(".kmFreight").attr("value");
+            var txtFreight = $(".txtFreight").val();
+            var total = parseInt(kmFreight) * parseInt(txtFreight);
+        });
+    </script>
+}

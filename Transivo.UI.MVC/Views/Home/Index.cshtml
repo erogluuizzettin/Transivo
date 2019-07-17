@@ -1,0 +1,218 @@
+﻿@using Transivo.Model.Models
+@using Transivo.UI.MVC.Models
+@model IndexViewModel
+
+@{
+    List<Country> countries = ViewBag.Countries;
+    List<Country> countriesArrive = ViewBag.CountriesArrive;
+}
+
+<!--== SlideshowBg Area Start ==-->
+<section id="slideslow-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="slideshowcontent">
+                    <div class="display-table">
+                        <div class="display-table-cell">
+                            <br />
+                            <h1>Hadi Durma Kargola...</h1>
+                            <p>Yüzlerce Firma Senin İçin Burada</p>
+                            <div class="book-ur-car" style="height:20%">
+                                <p>Başlangıç Noktası Bilgileri</p>
+                                <form method="post">
+                                    <div class="pick-location bookinput-item" style="margin-left:100px">
+                                        <select class="custom-select" name="CountryID" id="country">
+                                            <option>Ülke</option>
+                                            @if (countries != null)
+                                            {
+                                                for (int i = 0; i < countries.Count; i++)
+                                                {
+                                                    <option value="@countries[i].ID">@countries[i].Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="pick-location bookinput-item">
+                                        <select class="custom-select" name="CityID" id="cities">
+                                            <option>İl</option>
+                                        </select>
+                                    </div>
+                                    <div class="car-choose bookinput-item">
+                                        <select class="custom-select" name="DistrictID" id="districts">
+                                            <option>İlçe</option>
+                                        </select>
+                                    </div>
+                                    <div class="retern-date bookinput-item">
+                                        <input id="endDate2" placeholder="Taşıma Tarihi" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="book-ur-car"  style="height:20%" >
+                                <p>Varış Noktası Bilgileri</p>
+                                <form method="post" action="/Shipping/Shipping">
+                                    <div class="pick-location bookinput-item" style="margin-left:100px">
+                                        <select class="custom-select" name="CountriesID" id="arriveCountry">
+                                            <option>Ülke</option>
+                                            @if (countriesArrive != null)
+                                            {
+                                                for (int i = 0; i < countriesArrive.Count; i++)
+                                                {
+                                                    <option value="@countriesArrive[i].ID">@countriesArrive[i].Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="pick-location bookinput-item">
+                                        <select class="custom-select" name="CitysID" id="arriveCity">
+                                            <option>İl</option>
+                                        </select>
+                                    </div>
+                                    <div class="car-choose bookinput-item">
+                                        <select class="custom-select" name="DistrictsID" id="arriveDistrict">
+                                            <option>İlçe</option>
+                                        </select>
+                                    </div>
+                                    <div class="bookcar-btn bookinput-item">
+                                        <button type="submit" id="btnSearch">Şirket Ara</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--== SlideshowBg Area End ==-->
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        $("#country").change(function () {
+            var countryID = $("#country").val();
+            $("#cities").empty();
+            $("#districts").empty();
+            $("#cities").append('<option>İl</option>');
+            $("#districts").append('<option>İlçe</option>');
+
+            $.ajax({
+                url: "/Register/GetCitiesByCountry/",
+                type: "POST",
+                data: { "id": countryID },
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                success: function (resp) {
+                    if (resp != null) {
+                        $("#cities").empty();
+                        $("#cities").append('<option>İl</option>');
+                        $.each(resp, function (key, value) {
+                            $("#cities").append('<option value=' + value.Value + '>' + value.Text + '</option>');
+                        });
+                    } else {
+                        alert("veri gelmedi");
+                    }
+                },
+                error: function (err) {
+                    alert("hata");
+                    console.log(err);
+                }
+            });
+        });
+
+        $("#cities").change(function () {
+            var cityID = $("#cities").val();
+            $("#districts").append('<option>İlçe</option>');
+            $("#districts").empty();
+
+            $.ajax({
+                url: "/Register/GetDistrictByCity/",
+                type: "POST",
+                data: { "id": cityID },
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                success: function (resp) {
+                    if (resp != null) {
+                        $("#districts").empty();
+                        $("#districts").append('<option>İlçe</option>');
+                        $.each(resp, function (key, value) {
+                            $("#districts").append('<option value=' + value.Value + '>' + value.Text + '</option>');
+                        });
+                    } else {
+                        alert("veri gelmedi");
+                    }
+                },
+                error: function (err) {
+                    alert("hata");
+                    console.log(err);
+                }
+            });
+        });
+
+
+
+
+        $("#arriveCountry").change(function () {
+            var countryID = $("#arriveCountry").val();
+            $("#arriveCity").empty();
+            $("#arriveDistrict").empty();
+            $("#arriveCity").append('<option>İl</option>');
+            $("#arriveDistrict").append('<option>İlçe</option>');
+
+            $.ajax({
+                url: "/Register/GetCitiesByCountry/",
+                type: "POST",
+                data: { "id": countryID },
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                success: function (resp) {
+                    if (resp != null) {
+                        $("#arriveCity").empty();
+                        $("#arriveCity").append('<option>İl</option>');
+                        $.each(resp, function (key, value) {
+                            $("#arriveCity").append('<option value=' + value.Value + '>' + value.Text + '</option>');
+                        });
+                    } else {
+                        alert("veri gelmedi");
+                    }
+                },
+                error: function (err) {
+                    alert("hata");
+                    console.log(err);
+                }
+            });
+        });
+
+        $("#arriveCity").change(function () {
+            var cityID = $("#arriveCity").val();
+            $("#arriveDistrict").append('<option>İlçe</option>');
+            $("#arriveDistrict").empty();
+
+            $.ajax({
+                url: "/Register/GetDistrictByCity/",
+                type: "POST",
+                data: { "id": cityID },
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                success: function (resp) {
+                    if (resp != null) {
+                        $("#arriveDistrict").empty();
+                        $("#arriveDistrict").append('<option>İlçe</option>');
+                        $.each(resp, function (key, value) {
+                            $("#arriveDistrict").append('<option value=' + value.Value + '>' + value.Text + '</option>');
+                        });
+                    } else {
+                        alert("veri gelmedi");
+                    }
+                },
+                error: function (err) {
+                    alert("hata");
+                    console.log(err);
+                }
+            });
+        });
+    </script>
+
+}

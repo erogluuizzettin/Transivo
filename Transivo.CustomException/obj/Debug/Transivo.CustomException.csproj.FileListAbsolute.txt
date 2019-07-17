@@ -1,0 +1,5 @@
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.CustomException\bin\Debug\Transivo.CustomException.dll
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.CustomException\bin\Debug\Transivo.CustomException.pdb
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.CustomException\obj\Debug\Transivo.CustomException.csproj.CoreCompileInputs.cache
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.CustomException\obj\Debug\Transivo.CustomException.dll
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.CustomException\obj\Debug\Transivo.CustomException.pdb

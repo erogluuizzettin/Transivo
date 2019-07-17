@@ -1,0 +1,15 @@
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\bin\Debug\Transivo.Model.dll.config
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\bin\Debug\Transivo.Model.dll
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\bin\Debug\Transivo.Model.pdb
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\bin\Debug\EntityFramework.dll
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\bin\Debug\Transivo.Core.dll
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\bin\Debug\Transivo.Core.pdb
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\bin\Debug\Transivo.Core.dll.config
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\bin\Debug\EntityFramework.xml
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\obj\Debug\Transivo.Model.csprojAssemblyReference.cache
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\obj\Debug\Transivo.Model.csproj.CoreCompileInputs.cache
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\obj\Debug\Transivo.Model.csproj.CopyComplete
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\obj\Debug\Transivo.Model.dll
+C:\Users\erogluizzettin\Desktop\Transivo\Transivo.Model\obj\Debug\Transivo.Model.pdb

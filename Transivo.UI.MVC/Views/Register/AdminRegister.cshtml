@@ -1,0 +1,91 @@
+﻿@using Transivo.Model.Models
+@using Transivo.UI.MVC.Models
+@model RegisterAdminAndCompanyViewModel
+
+@{
+    List<Country> countries = ViewBag.Countries;
+}
+
+<section style=" background-color:blue;height:120px"></section>
+<!--== Login Page Content Start ==-->
+<section id="lgoin-page-wrap" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-8 m-auto">
+                <div class="login-page-content">
+                    <div class="login-form">
+                        <span>'*' lı Alanların Doldurulması Zorunludur</span>
+                        <form class="login_form" method="post">
+                            @Html.AntiForgeryToken()
+
+                            <h3>Şirket Kayıt Formu</h3>
+                            <div class="username">
+                                @Html.TextBoxFor(a => a.CompanyName, new { type = "text", placeholder = "Şirket adı*", @class = "form-control" })
+                                <div class="col-md-10">
+                                    @Html.ValidationMessageFor(a => a.CompanyName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="username">
+                                @Html.TextBoxFor(a => a.Phone, new { type = "text", placeholder = "(90)-(555)-555-55-55*", @class = "form-control" })
+                                <div class="col-md-10">
+                                    @Html.ValidationMessageFor(a => a.Phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="username">
+                                @Html.TextBoxFor(a => a.TaxNumber, new { type = "text", placeholder = "Vergi no*", @class = "form-control" })
+                                <div class="col-md-10">
+                                    @Html.ValidationMessageFor(a => a.TaxNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="username">
+                                @Html.TextBoxFor(a => a.About, new { type = "text", placeholder = "Açıklama*", @class = "form-control" })
+                                <div class="col-md-10">
+                                    @Html.ValidationMessageFor(a => a.About, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <h3>Şirket Admin Kayıt Formu</h3>
+
+                            <div class="username">
+                                @Html.TextBoxFor(a => a.EMail, new { type = "email", placeholder = "EMail*", @class = "form-control" })
+                                <div class="col-md-10">
+                                    @Html.ValidationMessageFor(a => a.EMail, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="username">
+                                @Html.TextBoxFor(a => a.Username, new { type = "text", placeholder = "Kullanıcı adı*", @class = "form-control" })
+                                <div class="col-md-10">
+                                    @Html.ValidationMessageFor(a => a.Username, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="password">
+                                @Html.TextBoxFor(a => a.Password, new { type = "password", id = "password", placeholder = "Şifre*", @class = "form-control" })
+                                <div class="col-md-10">
+                                    @Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="password">
+                                @Html.TextBoxFor(a => a.RePassword, new { type = "password", id = "rePassword", placeholder = "Şifre tekrarı*", @class = "form-control" })
+                                <div class="col-md-10">
+                                    @Html.ValidationMessageFor(a => a.RePassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            @if (ViewBag.Message != null)
+                            {
+                                <span>@ViewBag.Message</span>
+                            }
+
+                            <div class="log-btn">
+                                <button type="submit" value="submit" id="btnSubmit"><i class="fa fa-check-square"></i> ONAYLA</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--== Login Page Content End ==-->
