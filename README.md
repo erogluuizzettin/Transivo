@@ -1,5 +1,7 @@
 # Transivo
 
+Asp. NET MVC ile Nakliyat Otomasyonu
+
 Asp .NET MVC ile katmanlı mimari kullanılarak bu proje yapılmıştır. 
 UI kısmında esksiklikler bulunmaktadır. Bu projenin amacı;SOLID prensiplerine uygun 
 bir şekilde katmanlı mimari kullanılarak, projeye dinamiklik-esneklik kazandırma,
